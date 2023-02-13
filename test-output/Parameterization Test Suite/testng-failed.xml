@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Failed suite [Parameterization Test Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="tests" name="chromeTest(failed)">
+    <parameter name="msg" value="Test Message"/>
+    <parameter name="sub" value="Test Subject"/>
+    <parameter name="name" value="John"/>
+    <parameter name="email" value="john@example.com"/>
+    <classes>
+      <class name="com.mohs10.scripts.HomeTest">
+        <methods>
+          <include name="generateReport"/>
+          <include name="chrome" invocation-numbers="0">
+            <parameter name="msg" value="${msg}"/>
+            <parameter name="name" value="bkkbkb"/>
+            <parameter name="sub" value="${sub}"/>
+            <parameter name="email" value="dgvhbvV@gmail.com"/>
+          </include> <!-- chrome -->
+          <include name="methodName"/>
+        </methods>
+      </class> <!-- com.mohs10.scripts.HomeTest -->
+    </classes>
+  </test> <!-- chromeTest(failed) -->
+  <test thread-count="5" parallel="tests" name="FirefoxTest(failed)">
+    <parameter name="msg" value="Test Message"/>
+    <parameter name="sub" value="Test Subject"/>
+    <parameter name="name" value="John"/>
+    <parameter name="email" value="john@example.com"/>
+    <classes>
+      <class name="com.mohs10.scripts.HomeTest">
+        <methods>
+          <include name="generateReport"/>
+          <include name="firefox" invocation-numbers="0">
+            <parameter name="msg" value="${msg}"/>
+            <parameter name="name" value="bkkbkb"/>
+            <parameter name="sub" value="${sub}"/>
+            <parameter name="email" value="gmail@gmail.com"/>
+          </include> <!-- firefox -->
+          <include name="methodName"/>
+        </methods>
+      </class> <!-- com.mohs10.scripts.HomeTest -->
+    </classes>
+  </test> <!-- FirefoxTest(failed) -->
+</suite> <!-- Failed suite [Parameterization Test Suite] -->

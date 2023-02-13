@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test thread-count="5" name="Test">
-    <classes>
-      <class name="com.mohs10.scripts.HomeTest"/>
-    </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+
+<suite name="Parameterization Test Suite" parallel="tests">
+
+
+<test name="CrossbrowserTest">
+
+    <parameter name="name" value="John"/>
+    <parameter name="email" value="john@example.com"/>
+    <parameter name="sub" value="Test Subject"/>
+    <parameter name="msg" value="Test Message"/>
+
+ 
+  <classes>
+    <class name="com.mohs10.scripts.HomeTest">
+      <methods>
+        <include name="chrome">
+         
+            <parameter name="name" value="mohs10tech"/>
+            <parameter name="email" value="mhs10@gmail.com"/>
+            <parameter name="sub" value="happy deal}"/>
+            <parameter name="msg" value="Hi Krisemi , My Self Mohs10 technology, happy to meet with You."/>
+        
+        </include>
+        <include name="edge">
+        <parameter name="name" value="mohs10tech"/>
+            <parameter name="email" value="mhs10@gmail.com"/>
+            <parameter name="sub" value="happy deal"/>
+            <parameter name="msg" value="Hi Krisemi , My Self Mohs10 technology, happy to meet with You."/>
+        </include>
+        <include name="firefox">
+        <parameter name="name" value="mohs10tech"/>
+            <parameter name="email" value="mhs10@gmail.com"/>
+            <parameter name="sub" value="happy deal"/>
+            <parameter name="msg" value="Hi Krisemi , My Self Mohs10 technology, happy to meet with You."/>
+        </include>
+        
+        
+      </methods>
+    </class>
+  </classes>
+</test>
+
+
+</suite>

@@ -1,60 +1,57 @@
 package com.mohs10.scripts;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.mohs10.ActionDriver.Action;
 import com.mohs10.base.StartBrowser;
+import com.mohs10.getData.getdata;
+import com.mohs10.or.HomePage;
 import com.mohs10.reuse.CommonFuns;
 
-	public class HomeTest extends StartBrowser{
+
+
+public class HomeTest extends StartBrowser {
 	
-	//Clicking on Categories links #4
-	@Test
-	public void CategoriesTest() throws Exception {
-		CommonFuns cat = new CommonFuns();
-	    cat.Categories();
-		Thread.sleep(5000);
+	@Test 
+	@Parameters({"browser", "name", "email", "sub", "msg"})
+	public void firefox(@Optional("firefox") String browser, String name, String email, String sub, String msg) throws Exception {
+	  WebDriver driver = StartBrowser.beforeClass(browser, "https://krisemidesigntech.com/about.html");
+	  CommonFuns coms = new CommonFuns();
+	  System.out.println("Firefox browser open");
+
+	  coms.CommonsFun(name, email, sub, msg);// test data should be given in .xml file
+	  System.out.println("FireFox closed");
+
+	  Thread.sleep(2000); 
+	  driver.close();
 	}
-	
-	//Clicking on news link #5
+
+	//provide @optional annotation to browser name	
 	@Test
-	public void NewsbtnTestCase() throws Exception {
-		CommonFuns News = new CommonFuns();
-	    News.Pagedown();
-	    Thread.sleep(2000);
-	    News.Newsbtn();
-		Thread.sleep(5000);
+	@Parameters({"browser", "name", "email", "sub", "msg"})
+	public void chrome(@Optional("chrome") String browser, String name, String email, String sub, String msg) throws Exception {
+	  WebDriver driver = StartBrowser.beforeClass(browser, "https://krisemidesigntech.com/about.html");
+	  CommonFuns coms = new CommonFuns();
+      System.out.println("chrome browser opened");
+	  coms.CommonsFun(name, email, sub, msg);
+	  System.out.println("chrome browser closed");
+	  Thread.sleep(2000); 
+	  driver.close();
 	}
-	//blog Link #1
+	//change only @ optional referece
 	@Test
-	public void BlogbtnTestCase() throws Exception {
-		CommonFuns blog = new CommonFuns();
-	    blog.Pagedown();
-	    Thread.sleep(2000);
-	    blog.Blogbtn();
-		Thread.sleep(5000);
+	@Parameters({"browser", "name", "email", "sub", "msg"})
+	public void edge(@Optional("edge") String browser, String name, String email, String sub, String msg) throws Exception {
+	  WebDriver driver = StartBrowser.beforeClass(browser, "https://krisemidesigntech.com/about.html");
+	  CommonFuns coms = new CommonFuns();
+	  System.out.println("edge browser opened");
+	  coms.CommonsFun(name, email, sub, msg);
+	  System.out.println("edge browser closed");
+	  Thread.sleep(2000); 
+	  driver.close();
 	}
-	
-	/*//Registration of new user #6
-	@Test
-	public void RegisterPageTestCase() throws Exception {
-		CommonFuns hm = new CommonFuns();
-			  hm.Register("Manisha", "Koyla", "manishkoyla@hotmail.com", "Test@444", "Test@444");
-			  Thread.sleep(5000);
-		  }*/
-	
-	//Testing with invalid inputs #2
-	@Test
-	public void InvalidLogInTestCase() throws Exception {
-		CommonFuns hm1 = new CommonFuns();
-			  hm1.invalidLogIn("Invalidlogininputs@gmail.com", "Test@1114");
-			  Thread.sleep(5000);
-	
 }
-	//Testing with Valid inputs #3
-	@Test
-		  public void LoginPageTestCase() throws Exception {
-		CommonFuns hm2 = new CommonFuns();
-			  hm2.logIn("anishapatel44@gmail.com", "anishapatel123");
-			  Thread.sleep(5000);
-		  }
-		}

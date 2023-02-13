@@ -1,11 +1,22 @@
 package com.mohs10.ActionDriver;
 
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -22,11 +33,56 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.mohs10.base.StartBrowser;
 
 public class Action extends com.mohs10.base.StartBrowser{
-public WebDriver driver;
+public static WebDriver driver;
+
+
+/*
+ * public void Phone_number(By locator, String text,int phonenumber) {
+ * 
+ * //WebElement ele=driver.findElement(locator).getText().toInteger();
+ * 
+ * final int lowerBound=1000; final int upperbound=1000000000;}
+ */
+	 public void chooseElement(int x,By locator){
+
+		   WebElement webElement;
+int y=x;		   
+		    if (y>100000000&y<10000000) {          
+		        webElement=driver.findElement(locator);
+		         }
+		         else if(y>100000&y<10000){
+		    	 webElement=driver.findElement(locator);
+		         }
+		         else if(y>100&y<0) {
+		    	webElement=driver.findElement(locator);}
+		    
+		         else {
+		    	System.out.print("no input");
+		    }
+			return;
+			}
+
+/*
+ * JTextField tf; Container container; JLabel label; public void
+ * JTextFieldValidation() { container = getContentPane(); setBounds(0, 0, 500,
+ * 300); tf = new JTextField(25); setLayout(new FlowLayout()); container.add(new
+ * JLabel("Enter the number")); container.add(tf); container.add(label = new
+ * JLabel()); label.setForeground(Color.red);
+ * setDefaultCloseOperation(EXIT_ON_CLOSE); setLocationRelativeTo(null);
+ * tf.addKeyListener(new KeyAdapter() { public void keyPressed(KeyEvent ke) {
+ * String value = tf.getText(); int l = value.length(); if (ke.getKeyChar() >=
+ * '0' && ke.getKeyChar() <= '9') { tf.setEditable(true); label.setText(""); }
+ * else { tf.setEditable(false);
+ * label.setText("* Enter only numeric digits(0-9)"); } } }); setVisible(true);
+ */
+
+
+
 
 public Action()
 {
@@ -65,7 +121,7 @@ public void click(By locator, String eleName) throws Exception
 }
 
 
-	public void scrollByVisibilityOfElement(WebDriver driver, WebElement ele) {
+	public void scrollByVisibilityOfElement(WebDriver driver, By ele) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView();", ele);
 
@@ -157,7 +213,7 @@ public void click(By locator, String eleName) throws Exception
 		try {
 			flag = ele.isDisplayed();
 			ele.clear();
-			ele.sendKeys(text);
+			ele .sendKeys(text);
 			// logger.info("Entered text :"+text);
 			flag = true;
 		} catch (Exception e) {

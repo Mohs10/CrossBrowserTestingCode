@@ -6,10 +6,8 @@
       <class name="com.mohs10.scripts.HomeTest">
         <methods>
           <include name="generateReport"/>
-          <include name="beforeClass"/>
           <include name="methodName"/>
-          <include name="afterClass"/>
-          <include name="RegisterPageTestCase"/>
+          <include name="edge"/>
         </methods>
       </class> <!-- com.mohs10.scripts.HomeTest -->
     </classes>
